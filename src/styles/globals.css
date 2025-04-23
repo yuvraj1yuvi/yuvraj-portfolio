@@ -1,26 +1,82 @@
-@import "tailwindcss";
+/* styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-secondary text-primary font-sans antialiased;
+  /* @apply bg-dark text-light; These should match your config */
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-secondary;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary rounded-full;
+}
+
+/* Heading styles */
+h1, h2, h3, h4, h5, h6 {
+  @apply text-[rgb(17_20_57_/_0.8)] font-semibold;
+}
+
+/* Prose styles for blog content */
+.prose {
+  @apply text-primary/90;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  @apply text-[rgb(17_20_57_/_0.8)];
+}
+
+.prose a {
+  @apply text-accent hover:text-heading transition-colors;
+}
+
+.prose code {
+  @apply bg-primary/10 text-primary px-2 py-1 rounded;
+}
+
+.prose pre {
+  @apply bg-primary/10 rounded-lg p-4 overflow-x-auto;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0;
+}
+
+/* Gradient background utility */
+.bg-gradient-primary {
+  @apply bg-gradient-to-br from-gradient-start to-gradient-end;
+}
+
+/* Modern card styles */
+.card {
+  @apply bg-secondary rounded-lg shadow-lg p-6 border border-primary/10;
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-primary text-secondary px-6 py-2 rounded-lg hover:bg-primary/90 transition-colors;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-primary border border-primary/20 px-6 py-2 rounded-lg hover:bg-primary/5 transition-colors;
+}
+
+.btn-accent {
+  @apply bg-accent text-primary px-6 py-2 rounded-lg hover:bg-accent/90 transition-colors;
 }
